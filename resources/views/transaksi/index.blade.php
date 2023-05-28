@@ -11,6 +11,7 @@
     <div class="card">
       <div class="card-body d-flex justify-content-between g-3">
         <a href="{{ route('transaksi.hutang.index') }}" class="btn btn-danger">Transaksi Hutang</a>
+        <a href="{{ route('transaksi.hutang.index') }}" class="btn btn-secondary">Bayar Hutang</a>
         <a href="#" class="btn btn-success">Transaksi Beli</a>
       </div>
     </div>

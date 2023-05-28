@@ -51,31 +51,37 @@
     <div class="col-md-8">
       <div class="col">
         <h2 class="h4 mb-0">Daftar Orang Yang Berhutang</h2>
-        <table class="table table-responsive table-striped table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Tanggal Berhutang</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Jumlah Hutang</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($listHutang as $item)
-            <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->tanggal->translatedFormat('d-m-Y') }}
-              </td>
-              <td>{{ $item->pelanggan->nama }} <a href="#">Lihat Profil</a></td>
-              <td>{{ formatRupiah($item->total_hutang, true) }}</td>
-              <td>Belum Lunas</td>
-            </tr>
-            @endforeach
+        <div class="table-responsive">
+          <table class=" table-sm table table-responsive table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Jumlah Hutang</th>
+                <th scope="col">Dibayar</th>
+                <th scope="col">Sisa Hutang</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($listHutang as $item)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->tanggal->translatedFormat('d-m-Y') }}
+                </td>
+                <td>{{ $item->pelanggan->nama }} <a href="#">Lihat Profil</a></td>
+                <td>{{ formatRupiah($item->total_hutang, true) }}</td>
+                <td>-</td>
+                <td>{{ formatRupiah($item->total_hutang, true) }}</td>
+                <td>Belum Lunas</td>
+              </tr>
+              @endforeach
 
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

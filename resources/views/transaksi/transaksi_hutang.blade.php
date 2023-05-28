@@ -33,7 +33,7 @@
       </div>
       <div class="mb-3">
         {{ Form::label('jumlah', 'Jumlah') }}
-        {!! Form::text('jumlah', 0, ['class' => 'form-control rupiah']) !!}
+        {!! Form::text('jumlah', null, ['class' => 'form-control rupiah']) !!}
         <span class="text-danger"></span>
       </div>
       <div class="mb-3">

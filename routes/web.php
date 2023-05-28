@@ -27,3 +27,5 @@ Route::resource('transaksi', TransaksiController::class);
 
 Route::get('transaksi-hutang', [TransaksiHutangController::class, 'index'])->name('transaksi.hutang.index');
 Route::post('transaksi-hutang', [TransaksiHutangController::class, 'store'])->name('transaksi.hutang.create');
+Route::get('transaski-bayar-hutang', [TransaksiHutangController::class, 'transaksiBayarHutang'])->name('transaksi.bayar.hutang');
+Route::get('get-pelanggan-debt/{pelangganId}', [TransaksiHutangController::class, 'getPelangganDebt'])->name('get.pelanggan.debt');

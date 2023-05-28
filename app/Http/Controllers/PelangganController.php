@@ -67,4 +67,13 @@ class PelangganController extends Controller
         return redirect()->route('pelanggan.index')
             ->with('success', 'Pelanggan berhasil dihapus.');
     }
+
+    public function getPelangganDebt($pelangganId)
+    {
+        $pelanggan = Pelanggan::find($pelangganId);
+
+        return response()->json([
+            'debt' => $pelanggan->total_hutang, // Ganti 'debt' dengan nama kolom total hutang di tabel pelanggan
+        ]);
+    }
 }

@@ -53,6 +53,15 @@
 
 
     <script src={{ asset('assets/js/app.js') }}></script>
+    <script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.rupiah').mask("#.##0", {
+                reverse: true
+            });
+        });
+    </script>
     @yield('js')
 </body>
 

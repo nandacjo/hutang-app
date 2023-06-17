@@ -9,18 +9,13 @@ class TransaksiHutang extends Model
 {
     use HasFactory;
 
-    public $table = 'table_transaski_hutang';
 
     protected $casts = [
-        'tanggal' => 'datetime',
+        'tanggal_hutang' => 'datetime',
+        'tanggal_jatuh_tempo' => 'datetime',
     ];
 
-    protected $fillable = [
-        'tanggal',
-        'pelanggan_id',
-        'jumlah',
-        'keterangan',
-    ];
+    protected $guarded = ['id'];
 
     public function pelanggan()
     {

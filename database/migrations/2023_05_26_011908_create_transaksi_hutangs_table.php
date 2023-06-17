@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_transaski_hutang', function (Blueprint $table) {
+        Schema::create('transaksi_hutangs', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tanggal');
-            $table->foreignId('pelanggan_id')->index();
-            $table->bigInteger('jumlah');
-            $table->text('keterangan');
-            $table->bigInteger('total_hutang');
+            $table->foreignId('pelanggan_id')->index()->constrained('pelanggans');
+            $table->integer('jumlah_hutang');
+            $table->dateTime('tanggal_hutang');
+            $table->dateTime('tanggal_jatuh_tempo')->nullable();
+            $table->string('status')->default('unpaid');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

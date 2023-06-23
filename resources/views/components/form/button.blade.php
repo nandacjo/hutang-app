@@ -1,1 +1,1 @@
-{!! Form::submit($name, ['class' => 'btn btn-{{ $type }}']) !!}
+{!! Form::submit($name, ['class' => 'btn btn-primary']) !!}

@@ -146,8 +146,9 @@ class TransaksiHutangController extends Controller
 
         if ($hutang->jumlah_hutang == 0) {
             $hutang->status = 'lunas'; // Set status hutang menjadi 'paid' atau sesuai kebutuhan
+        } else {
+            $hutang->status = 'belum lunas'; // Set status hutang menjadi 'paid' atau sesuai kebutuhan
         }
-        $hutang->status = 'belum lunas'; // Set status hutang menjadi 'paid' atau sesuai kebutuhan
         $hutang->update();
 
         $bayar = new BayarHutang();

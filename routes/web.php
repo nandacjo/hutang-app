@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ListPembayaranController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiHutangController;
 use App\Models\TransaksiHutang;
@@ -36,3 +37,4 @@ Route::post('transaski-bayar-hutang', [TransaksiHutangController::class, 'bayarH
 Route::get('transaski-bayar-hutang/{id}/edit', [TransaksiHutangController::class, 'edit'])->name('transaksi.bayar.hutang.edit');
 Route::put('transaski-hutang/{id}/update', [TransaksiHutangController::class, 'update'])->name('transaksi.hutang.update');
 Route::get('get-pelanggan-debt/{pelangganId}', [TransaksiHutangController::class, 'getPelangganDebt'])->name('get.pelanggan.debt');
+Route::get('list/{id}/pembayaran', [ListPembayaranController::class, 'show']);

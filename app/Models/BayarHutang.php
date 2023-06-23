@@ -9,5 +9,8 @@ class BayarHutang extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'tanggal_bayar' => 'datetime'
+    ];
     protected $guarded = ['id'];
 }

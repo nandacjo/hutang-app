@@ -21,7 +21,6 @@
 
 <body>
   <div class="wrapper">
-    @include('layouts.base.sidebar')
 
     <div class="main">
       @include('layouts.base.navbar')

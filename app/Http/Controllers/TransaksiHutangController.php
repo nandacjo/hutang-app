@@ -28,6 +28,11 @@ class TransaksiHutangController extends Controller
         return view('transaksi.edit', compact('pelanggan', 'hutang'));
     }
 
+    public function show($id)
+    {
+        return view('transaksi.index');
+    }
+
     public function update(Request $request, $id)
     {
         $requestData = $request->validate([

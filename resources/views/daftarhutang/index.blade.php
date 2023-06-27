@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app-hutang')
 
 @section('content')
-  <h1 class="h3 mb-3">Halaman Dashboard</h1>
+  <h1 class="h3 mb-3">Daftar Hutang Pelanggan</h1>
 
   <div class="row">
     <div class="col-12">
@@ -41,8 +41,9 @@
                         <td>{{ $item->pelanggan->nama }} <a href="#">Lihat Profil</a></td>
                         <td>{{ formatRupiah($item->jumlah_hutang, true) }}</td>
                         <td>
-                          <a href="/list/{{ $item->id }}/pembayaran" class="btn btn-sm btn-secondary rounded"><i
-                              class="align-middle" data-feather="list"></i> List Pembayaran</a>
+                          <a href="/daftar-hutang/{{ $item->id }}/list-pembayaran"
+                            class="btn btn-sm btn-secondary rounded"><i class="align-middle" data-feather="list"></i> List
+                            Pembayaran</a>
                         </td>
                         <td>{{ formatRupiah($item->jumlah_hutang, true) }}</td>
                         <td>{{ $item->status }}</td>
@@ -54,7 +55,7 @@
                             class="btn btn-sm btn-primary rounded"><i class="align-middle" data-feather="plus-circle"></i>
                             Tambah
                           </a>
-                          <a href="{{ route('transaksi.hutang.show', $item->id) }}"
+                          <a href="{{ route('daftar-hutang.show', $item->id) }}"
                             class="btn btn-sm btn-warning text-dark rounded"><i class="align-middle"
                               data-feather="alert-circle"></i> Detail</a>
                         </td>

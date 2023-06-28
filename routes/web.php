@@ -43,4 +43,5 @@ Route::get('list/{id}/pembayaran', [ListPembayaranController::class, 'show']);
 
 
 Route::get('daftar-hutang/{id}/list-pembayaran', [HutangController::class, 'listPembayaran']);
+Route::get('daftar-hutang/{id}/tambah-hutang', [HutangController::class, 'create']);
 Route::resource('daftar-hutang', HutangController::class);

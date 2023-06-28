@@ -37,7 +37,12 @@ class HutangController extends Controller
      */
     public function create()
     {
-        //
+        $pelanggan = Pelanggan::get()->pluck('nama', 'id', 'alamat');
+
+        return view('daftarhutang.create', [
+            'pelanggan' => $pelanggan,
+            'listHutang' => TransaksiHutang::latest()->paginate(10),
+        ]);
     }
 
     /**

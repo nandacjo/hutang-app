@@ -48,10 +48,10 @@
                         <td>{{ formatRupiah($item->jumlah_hutang, true) }}</td>
                         <td>{{ $item->status }}</td>
                         <td align="middle">
-                          <a href="{{ route('transaksi.bayar.hutang', ['id' => $item->id]) }}"
+                          <a href="/daftar-hutang/{{ $item->id }}/list-pembayaran"
                             class="btn btn-sm btn-success rounded"><i class="align-middle"
                               data-feather="dollar-sign"></i>Bayar</a>
-                          <a href="{{ route('transaksi.bayar.hutang.edit', $item->id) }}"
+                          <a href="/daftar-hutang/{{ $item->id }}/tambah-hutang"
                             class="btn btn-sm btn-primary rounded"><i class="align-middle" data-feather="plus-circle"></i>
                             Tambah
                           </a>

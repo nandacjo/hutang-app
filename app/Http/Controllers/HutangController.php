@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreHutangRequest;
-use App\Http\Requests\UpdateHutangRequest;
-use App\Models\BayarHutang;
 use App\Models\Hutang;
 use App\Models\Pelanggan;
 use App\Models\Transaksi;
+use App\Models\BayarHutang;
+use Illuminate\Http\Request;
 use App\Models\TransaksiHutang;
+use App\Http\Requests\StoreHutangRequest;
+use App\Http\Requests\UpdateHutangRequest;
 
 class HutangController extends Controller
 {
@@ -66,17 +67,39 @@ class HutangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hutang $hutang)
+    public function tambah($id)
     {
-        //
+        $pelanggan = Pelanggan::get()->pluck('nama', 'id');
+        $hutang = TransaksiHutang::findOrFail($id);
+
+        return view('daftarhutang.tambah', [
+            'pelanggan' => $pelanggan,
+            'hutang' => $hutang,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateHutangRequest $request, Hutang $hutang)
+    public function update(Request $request, $id)
     {
-        //
+        $requestData = $request->validate([
+            'jumlah_hutang' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $requestData['jumlah_hutang'] = str_replace('.', '', $requestData['jumlah_hutang']);
+
+        $hutang = TransaksiHutang::findOrFail($id);
+
+        $hutang->jumlah_hutang = $requestData['jumlah_hutang'];
+        $hutang->keterangan = $requestData['keterangan'];
+
+        $hutang->update();
+
+        flash('Transaksi hutang berhasil diupdate!')->success();
+
+        return back();
     }
 
     /**

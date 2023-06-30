@@ -1,5 +1,55 @@
 @extends('layouts.app-hutang')
 
+<style>
+  .toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 82px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #707070;
+    transition: background-color ease 0.3s;
+  }
+
+  .toggle:before {
+    content: "lunas belum";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    font: 10px/28px Helvetica;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: -40px;
+    word-spacing: 37px;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+  }
+
+  .toggle:checked {
+    background-color: #4CD964;
+  }
+
+  .toggle:checked:before {
+    left: 52px;
+  }
+</style>
+
 @section('content')
   <h1 class="h3 mb-3">Daftar Hutang Pelanggan</h1>
 
@@ -23,7 +73,8 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Tanggal</th>
+                      <th scope="col">Tanggal Hutang</th>
+                      <th scope="col">Tanggal Update</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Jumlah Hutang</th>
                       <th scope="col">Dibayar</th>
@@ -38,6 +89,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->tanggal_hutang->translatedFormat('d-m-Y') }}
                         </td>
+                        <td>{{ $item->updated_at->translatedFormat('l, d-m-Y') }}</td>
                         <td>{{ $item->pelanggan->nama }} <a href="#">Lihat Profil</a></td>
                         <td>{{ formatRupiah($item->jumlah_hutang, true) }}</td>
                         <td>
@@ -46,7 +98,10 @@
                             Pembayaran</a>
                         </td>
                         <td>{{ formatRupiah($item->jumlah_hutang, true) }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td class="text-center">
+                          <input class="toggle" type="checkbox"
+                            {{ $item->status == 'lunas' ? 'checked disabled' : '' }} />
+                        </td>
                         <td align="middle">
                           <a href="/daftar-hutang/{{ $item->id }}/list-pembayaran"
                             class="btn btn-sm btn-success rounded"><i class="align-middle"
